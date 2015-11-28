@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 virtualenv at ~/pyve1" project-jdk-type="Python SDK" />
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings sdk-home="$USER_HOME$/pyve1/bin/python">
+        <option name="mySdkHome" value="$USER_HOME$/pyve1/bin/python" />
+      </console-settings>
+    </option>
+  </component>
+</project>
+
