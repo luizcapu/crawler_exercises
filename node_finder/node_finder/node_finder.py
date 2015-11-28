@@ -10,6 +10,8 @@ class NodeFinder(object):
     def __init__(self, html_text):
         self.html_text = html_text
         self.bs = BeautifulSoup(self.html_text, 'html.parser')
+        [s.extract() for s in self.bs.findAll('script')]  # remove script tags
+        [s.extract() for s in self.bs.findAll('style')]  # remove style tags
         self.max_scored_node = None
 
     def node_text(self, node):
@@ -35,10 +37,11 @@ class NodeFinder(object):
         return result
 
     def run(self):
-        for child in self.bs.body.contents:
-            if not isinstance(child, NavigableString):
-                self.parse_node(child)
-        return self.max_scored_node[0] if self.max_scored_node else None
+        if self.bs.body:
+            for child in self.bs.body.contents:
+                if not isinstance(child, NavigableString):
+                    self.parse_node(child)
+            return str(self.max_scored_node[0]).strip() if self.max_scored_node else None
 
     @staticmethod
     def extract_file_content(file_path):

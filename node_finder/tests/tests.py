@@ -66,8 +66,9 @@ ESSSEEEEEEEEEEEEEEEE
 
     def _run_test_id(self, test_id):
         nf = NodeFinder(NodeFinderTests._payload[test_id]["in"])
-        self.assertEqual(str(nf.run()).strip(), NodeFinderTests._payload[test_id]["out"].strip())
-        self.assertEqual(nf.max_scored_node[1], NodeFinderTests._payload[test_id]["score"])
+        self.assertEqual(nf.run(), NodeFinderTests._payload[test_id]["out"].strip())
+        if not NodeFinderTests._payload[test_id]["score"] is None:
+            self.assertEqual(nf.max_scored_node[1], NodeFinderTests._payload[test_id]["score"])
 
     def test_1(self):
         self._run_test_id(0)

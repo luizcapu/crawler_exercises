@@ -32,8 +32,18 @@ o processamento.
 === INSTALLATION
 
 1) Prepare o ambiente para rodar aplicacoes python
-2) Preferencialmente use um virtual environment
+2) Preferencialmente use um virtual environment (https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
 3) Rode o arquivo install.sh
+
+
+```
+usage: node_finder.py [-h] [-f HTML_FILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f HTML_FILE, --html_file HTML_FILE
+                        HTML source file path to parse and find node
+```
 
 === Example Usage
 
