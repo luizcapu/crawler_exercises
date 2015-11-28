@@ -1,12 +1,11 @@
 __author__ = 'luiz'
 
 from bs4 import BeautifulSoup, NavigableString
-import argparse
-import os
 import urllib2
+from collector_interface import CollectorInterface
 
 
-class DefaultCollector(object):
+class DefaultCollector(CollectorInterface):
 
     def __init__(self, url):
         self.url = url
@@ -37,12 +36,12 @@ class DefaultCollector(object):
         return len(self._node_text(node))
 
     def _parse_node(self, node):
-        result = self._node_text_len(node) + 0.5 * self.children_score(node.children)
+        result = self._node_text_len(node) + 0.5 * self._children_score(node.children)
         if self.max_scored_node is None or self.max_scored_node[1] < result:
             self.max_scored_node = (node, result)
         return result
 
-    def children_score(self, children):
+    def _children_score(self, children):
         result = 0
         for child in children:
             if not isinstance(child, NavigableString):

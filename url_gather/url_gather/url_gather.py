@@ -9,6 +9,41 @@ from threading import Thread, Event
 import traceback
 
 
+def import_code(code, name, add_to_sys_modules=0):
+    """
+    Import dynamically generated code as a module. code is the
+    object containing the code (a string, a file handle or an
+    actual compiled code object, same types as accepted by an
+    exec statement). The name is the name to give to the module,
+    and the final argument says wheter to add it to sys.modules
+    or not. If it is added, a subsequent import statement using
+    name will return this module. If it is not added to sys.modules
+    import will try to load it in the normal fashion.
+
+    import foo
+
+    is equivalent to
+
+    foofile = open("/path/to/foo.py")
+    foo = importCode(foofile,"foo",1)
+
+    Returns a newly generated module.
+    """
+    try:
+        import sys,imp
+
+        module = imp.new_module(name)
+
+        exec str(code) in module.__dict__
+        if add_to_sys_modules:
+            sys.modules[name] = module
+        return module
+    except:
+        print "***********   Exception in trying to load module '%s'" % name
+        print '-' * 60
+        print traceback.format_exc()
+
+
 class URLGather(object):
 
     def __init__(self, *args, **kwargs):
@@ -47,7 +82,10 @@ class URLGather(object):
             if os.path.isfile(self.collector_file):
                 if self.collector_class:
                     # TODO load custom collector
-                    pass
+                    with open(self.collector_file, "r") as custom_code:
+                        import_code(custom_code.read(), "custom_collector", 1)
+                    m = __import__("custom_collector")
+                    self.collector = m.__getattribute__(self.collector_class)
                 else:
                     raise Exception("Undefined custom collector class name.")
             else:
@@ -141,8 +179,6 @@ if __name__ == "__main__":
     parser.add_argument("-cf", "--collector_file", help="Path to custom .py file to act as collector")
     parser.add_argument("-cc", "--collector_class", help="Class name of custom collector")
     args = parser.parse_args()
-
-    args.url = "http://noticias.terra.com.br/"
 
     gather = URLGather(**args.__dict__)
     gather.run()

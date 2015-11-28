@@ -1,6 +1,8 @@
 url_gather
 ============
 
+== GOALS (Brazilian Portuguese)
+
 Imagine que você quer coletar as páginas de um site e para cada página encontrar o conteúdo
 textual das notícias dele.
 Seu objetivo é implementar um coletor web que dada uma URL inicial (​
@@ -29,14 +31,16 @@ Duas dicas:
 
 === INSTALLATION
 
-1) Prepare o ambiente para rodar aplicacoes python
-2) Preferencialmente use um virtual environment (https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
-3) Rode o arquivo install.sh
+1) Be sure your environment is read to run Python applications (https://www.python.org/about/gettingstarted/)
+2) Recommended use of virtual environment (Brazilian Portuguese reference: https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
+3) Run install.sh file found at the root of the project
 
+=== HELP OUTPUT
 
 ```
-usage: url_gather.py [-h] [-u URL] [-d DEPTH] [-w WORKERS] [-o OUT]
-                     [-cf COLLECTOR_FILE] [-cc COLLECTOR_CLASS]
+usage: url_gather.py [-h] [-u URL] [-d DEPTH] [-w WORKERS]
+                     [-ae ACCEPTABLE_ERRORS] [-o OUT] [-cf COLLECTOR_FILE]
+                     [-cc COLLECTOR_CLASS]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -45,6 +49,9 @@ optional arguments:
                         Gathering depth
   -w WORKERS, --workers WORKERS
                         Number of parallel workers
+  -ae ACCEPTABLE_ERRORS, --acceptable_errors ACCEPTABLE_ERRORS
+                        Max acceptable errors to continue execution
+                        (-1=disabled)
   -o OUT, --out OUT     Folder to save output files
   -cf COLLECTOR_FILE, --collector_file COLLECTOR_FILE
                         Path to custom .py file to act as collector
@@ -53,9 +60,21 @@ optional arguments:
 ```
 
 
-=== Example Usage
+=== USAGE EXAMPLE
 
 ```
 cd url_gather
 python url_gather.py -u http://g1.globo.com/ -d 1 -w 5 -o /tmp/
 ```
+
+USING A CUSTOM COLLECTOR
+
+```
+python url_gather.py -u http://g1.globo.com/ -cf ./collectors/test_custom_collector.py -cc TestCustomCollector
+```
+
+=== IMPORTANT
+
+Your custom collector code MUST OBEY the collector interface BUT MUST NOT INHERIT from it.
+Collector interface can be found at [ROOT]/url_gather/collectors/collector_interface.py
+

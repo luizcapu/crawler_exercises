@@ -1,6 +1,8 @@
 node_finder
 ============
 
+== GOALS (Brazilian Portuguese)
+
 Imagine que dada uma página HTML de uma notícia, você precisa achar qual o elemento
 HTML que melhor "represente" o conteúdo textual da notícia (contenha todo e apenas o texto
 do artigo). Uma solução simples seria simplesmente pegar o nó com mais texto, mas aí sempre
@@ -31,10 +33,12 @@ o processamento.
 
 === INSTALLATION
 
-1) Prepare o ambiente para rodar aplicacoes python
-2) Preferencialmente use um virtual environment (https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
-3) Rode o arquivo install.sh
+1) Be sure your environment is read to run Python applications (https://www.python.org/about/gettingstarted/)
+2) Recommended use of virtual environment (Brazilian Portuguese reference: https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
+3) Run install.sh file found at the root of the project
 
+
+=== HELP OUTPUT
 
 ```
 usage: node_finder.py [-h] [-f HTML_FILE]
@@ -45,7 +49,7 @@ optional arguments:
                         HTML source file path to parse and find node
 ```
 
-=== Example Usage
+=== USAGE EXAMPLE
 
 ```
 cd node_finder
