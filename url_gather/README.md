@@ -32,7 +32,9 @@ Duas dicas:
 === INSTALLATION
 
 1) Be sure your environment is read to run Python applications (https://www.python.org/about/gettingstarted/)
+
 2) Recommended use of virtual environment (Brazilian Portuguese reference: https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
+
 3) Run install.sh file found at the root of the project
 
 === HELP OUTPUT
@@ -76,5 +78,6 @@ python url_gather.py -u http://g1.globo.com/ -cf ./collectors/test_custom_collec
 === IMPORTANT
 
 Your custom collector code MUST OBEY the collector interface BUT MUST NOT INHERIT from it.
+
 Collector interface can be found at [ROOT]/url_gather/collectors/collector_interface.py
 
