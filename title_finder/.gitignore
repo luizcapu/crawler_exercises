@@ -1,0 +1,7 @@
+/target
+.DS_Store
+.classpath
+bin
+.project
+.settings
+_globallock

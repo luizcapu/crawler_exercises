@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -64,7 +63,7 @@ public class TitleFinder {
 		TitleFinder finder = new TitleFinder(titleFile);
 		String searchFor;
 		while (!(searchFor = finder.askForSearch()).equalsIgnoreCase(emptyStr)) {
-			Collection<Integer> titles = finder.searchWordInTitles(searchFor);
+			List<Integer> titles = finder.searchWordInTitles(searchFor);
 			
 			long ini = System.currentTimeMillis();
 			println(emptyStr);
@@ -173,16 +172,17 @@ public class TitleFinder {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private Collection<Integer> searchWordInTitles(String word) {
+	public List<Integer> searchWordInTitles(String word) {
+		word = normalizeText(word);
 		if (stopWords.contains(word)) {
 			return null;
 		}
-		return (Collection<Integer>) this.wordInTitleMap.get(word);
+		return (List<Integer>) this.wordInTitleMap.get(word);
 	}
 	
 	private String askForSearch() throws IOException {
 		print("Type a word to search for in available titles: ");
-		return normalizeText(reader.readLine());
+		return reader.readLine();
 	}
 	
 	private String normalizeText(String text) {
