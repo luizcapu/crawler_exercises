@@ -53,7 +53,7 @@ Desenvolvimento de um programa que, dado um arquivo de entrada contendo títulos
 
 
 Considerações:
-+++++++++++++++
+
 
 - Decidi manter uma lista separada com as strings do títulos e para cada palavra uma lista apenas de IDs visando diminuir o uso de memória. Sem a lista de títulos, cada HashMap de "palavra" teria que conter a string completa do título, o que acarretaria em um uso excessivo de memória, diminuindo performance e escalabilidade da solução. O contra dessa solução é ter que traduzir o ID antes de exibir o título mas a princípio parece que este custo vale a pena. Um estudo mais aprofundado seria necessário para confirmar essa hipótese.
 
