@@ -75,7 +75,6 @@ class URLGather(object):
         self._url_children = self._manager.dict()
         self._url_errors = self._manager.dict()
         self._url_events = {}
-        print "loaded"
 
     def _load_collector(self):
         if self.collector_file:

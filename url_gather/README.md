@@ -34,6 +34,28 @@ Duas dicas:
 SOLUTION (Brazilian Portuguese)
 -
 
+Desenvolvimento de um programa que, dada uma URL (parâmetro -u):
+
+1) Instancia uma pool e workers e um semaforo para processamento paralelo (de acordo com o parâmetro -w)
+
+2) Decide qual coletor usar (default ou cutomizado pelos parâmetros -cf e -cc)
+ 
+3) Executa "_gather_url" para a URL atual aplicando um job assíncrono para a pool de workers. Insere a URL atual em um "set" de URLs já coletadas, evitando loop infinito entre URLs (ex: URL_X aponta para URL_Y e URL_Y aponta para URL_X)
+
+4) Verifica se a profundida já está satisfeita (parâmetro -d). Caso contrário aguarda o processo assíncrono (coletor) responder quais são URLs filhas da URL atual que devem ser também coletadas. A espera é feita usando threads/events.
+
+5) Para cada URL filha a ser coletada, chama recursivamente "_gather_url"
+
+6) A coleta de cada URL é feita chamando a função "extract_content" do coletor. O resultado é salvo em [OUT]/url_gather/ (OUT = parâmetro -o)
+
+7) Uma feature adicional de número máximo de erros aceitável foi adicionada (parâmetro -ae). Caso a quantidade de erros iguale ou exceda o aceitável a execução é interrompida (-1 = sem limite de erros).
+
+Considerações:
+
+- Requisito "o programa deve ser capaz de usar o máximo de recursos possíveis seja de IO (baixar
+páginas) ou de CPU (processamento de uma página)": uso de multiprocess ao invés de multithread para dar maior vazão e evitar GIL. Quantidade de workers é parametrizável e pode ser "tunada". 
+
+- Esperar por URLs filhas atualmente deve rodar no processo pai, então foi necessário o uso de thread, o que pode acarretar em locks. Talvez aqui haja um ponto de melhoria a ser estudado.
 
 
 INSTALLATION
