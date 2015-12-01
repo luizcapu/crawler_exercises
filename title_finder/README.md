@@ -1,6 +1,7 @@
 # TitleFinder
 
-== GOALS (Brazilian Portuguese)
+GOALS (Brazilian Portuguese)
+-
 
 Imagine que temos uma arquivo texto onde cada linha contém o título de uma notícia: 
 ... 
@@ -27,7 +28,8 @@ consulta mais rápida
 ● Espera­se que para cada processamento do arquivo serão feito várias consultas 
 
 
-== SOLUTION (Brazilian Portuguese)
+SOLUTION (Brazilian Portuguese)
+-
 
 Desenvolvimento de um programa que, dado um arquivo de entrada contendo títulos de notícias:
 
@@ -50,7 +52,8 @@ Desenvolvimento de um programa que, dado um arquivo de entrada contendo títulos
 5) Se o HashMap contém a palavra, percorre os titulos IDs fazendo a tradução do ID para o título "raw" e escrevendo o título em System.out. Caso contrário, uma mensagem default é exibida indicando que nenhum título contém a palavra.
 
 
-* Considerações:
+Considerações:
++++++++++++++++
 
 - Decidi manter uma lista separada com as strings do títulos e para cada palavra uma lista apenas de IDs visando diminuir o uso de memória. Sem a lista de títulos, cada HashMap de "palavra" teria que conter a string completa do título, o que acarretaria em um uso excessivo de memória, diminuindo performance e escalabilidade da solução. O contra dessa solução é ter que traduzir o ID antes de exibir o título mas a princípio parece que este custo vale a pena. Um estudo mais aprofundado seria necessário para confirmar essa hipótese.
 
@@ -59,14 +62,16 @@ Desenvolvimento de um programa que, dado um arquivo de entrada contendo títulos
 - A pasta "[ROOT]/src/test/java" contém alguns testes unitários que serão automaticamente executados durante a execução de "build.sh".
 
 
-=== INSTALLATION
+INSTALLATION
+-
 
 1) Be sure your environment is ready to run Java (1.7) applications and supporting Maven projects (See: https://java.com/en/download/help/index_installing.xml and https://maven.apache.org/install.html)
 
 2) Run build.sh file found at the root of the project ("titlefinder-0.0.1-SNAPSHOT-jar-with-dependencies.jar" file should be generated at [ROOT]/target folder)
 
 
-=== EXPECTED PARAMETERS
+EXPECTED PARAMETERS
+-
 
 
 The unique expected parameter is the location of the .txt file to be processed. If no file is informed you'll be asked to use the default example file.
@@ -76,7 +81,8 @@ Could not get title file from arguments. Do you wanna use default example file ?
 ```
 
 
-=== USAGE EXAMPLE
+USAGE EXAMPLE
+-
 
 ```
 java -jar target/titlefinder-0.0.1-SNAPSHOT-jar-with-dependencies.jar ./src/main/resources/example.txt
