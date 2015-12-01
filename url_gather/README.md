@@ -1,7 +1,8 @@
 url_gather
 ============
 
-== GOALS (Brazilian Portuguese)
+GOALS (Brazilian Portuguese)
+-
 
 Imagine que você quer coletar as páginas de um site e para cada página encontrar o conteúdo
 textual das notícias dele.
@@ -30,11 +31,13 @@ Duas dicas:
 ­ Baixar apenas os links da primeira página já é suficiente.
 
 
-== SOLUTION (Brazilian Portuguese)
+SOLUTION (Brazilian Portuguese)
+-
 
 
 
-=== INSTALLATION
+INSTALLATION
+-
 
 1) Be sure your environment is ready to run Python (2.7x) applications (https://www.python.org/about/gettingstarted/)
 
@@ -42,7 +45,9 @@ Duas dicas:
 
 3) Run install.sh file found at the root of the project
 
-=== HELP OUTPUT
+
+HELP OUTPUT
+-
 
 ```
 usage: url_gather.py [-h] [-u URL] [-d DEPTH] [-w WORKERS]
@@ -67,7 +72,8 @@ optional arguments:
 ```
 
 
-=== USAGE EXAMPLE
+USAGE EXAMPLE
+-
 
 ```
 cd url_gather
@@ -75,12 +81,14 @@ python url_gather.py -u http://g1.globo.com/ -d 1 -w 5 -o /tmp/
 ```
 
 USING A CUSTOM COLLECTOR
+-
 
 ```
 python url_gather.py -u http://g1.globo.com/ -cf ./collectors/test_custom_collector.py -cc TestCustomCollector
 ```
 
-=== IMPORTANT
+IMPORTANT
+-
 
 Your custom collector code MUST OBEY the collector interface BUT MUST NOT INHERIT from it.
 

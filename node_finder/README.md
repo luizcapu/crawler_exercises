@@ -1,7 +1,8 @@
 node_finder
 ============
 
-== GOALS (Brazilian Portuguese)
+GOALS (Brazilian Portuguese)
+-
 
 Imagine que dada uma página HTML de uma notícia, você precisa achar qual o elemento
 HTML que melhor "represente" o conteúdo textual da notícia (contenha todo e apenas o texto
@@ -31,12 +32,26 @@ o processamento.
 ­ Você pode usar uma biblioteca externa que faça o parser e manipulação do DOM HTML.
 
 
-== SOLUTION (Brazilian Portuguese)
+SOLUTION (Brazilian Portuguese)
+-
+
+Desenvolvimento de um programa que, dado um arquivo de entrada contendo código HTML:
+
+1) Faz o parser do texto contendo o código HTML
+
+2) Remove tags de "script" e "style"
+
+3) Percorre todos elementos de "body" chamando a função "parse_node" responsável por calcular o score do nó atual.
+
+4) Para cada node filho do item 3 chama recursivamente a função "parse_node", compondo assim a regra (0.5 * children_score(node)
+
+5) Mantém um único "ponteiro" para o nó com maior score (ao invés de guardar o score de todos nós)
+
+6) Retorna uma representação string do nó com maior score ou "None" caso nenhum nó tenha sido encontrado (ex: "body" é vazio)
 
 
-
-
-=== INSTALLATION
+INSTALLATION
+-
 
 1) Be sure your environment is ready to run Python (2.7x) applications (https://www.python.org/about/gettingstarted/)
 
@@ -45,7 +60,8 @@ o processamento.
 3) Run install.sh file found at the root of the project
 
 
-=== HELP OUTPUT
+HELP OUTPUT
+-
 
 ```
 usage: node_finder.py [-h] [-f HTML_FILE]
@@ -56,7 +72,8 @@ optional arguments:
                         HTML source file path to parse and find node
 ```
 
-=== USAGE EXAMPLE
+USAGE EXAMPLE
+-
 
 ```
 cd node_finder
