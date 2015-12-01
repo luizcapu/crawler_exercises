@@ -32,9 +32,13 @@ consulta mais rápida
 Desenvolvimento de um programa que, dado um arquivo de entrada contendo títulos de notícias:
 
 1) Percorre as linhas do arquivo, sendo que para cada linha:
+	
 	1.1) Popula uma lista de títulos (string raw)
+	
 	1.2) Percorre as palavras do título atual, sendo que para cada palavra:
+	
 		1.2.1) Normaliza a palavra (minúsculo, sem acento, etc.) e verifica se não é uma "stop word"
+		
 		1.2.2) Popula um HashMap<(string) palavra, HashMap<(int) tituloID, (int) frequenciaDaPalavraNoTitulo>>
 		
 2) Transforma HashMap<(string) palavra <(int) tituloID, (int) frequenciaDaPalavraNoTitulo>> em HashMap<(string) palavra, List<(int) tituloID>>, sendo List<(int) tituloID> uma lista ordenada em ordem decrescente dos IDs de títulos onde a palavra é mais frequente
