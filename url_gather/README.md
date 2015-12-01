@@ -29,9 +29,14 @@ Duas dicas:
 ­ Baixar apenas links apontando para o mesmo domínio já é suficiente (e mais rápido)
 ­ Baixar apenas os links da primeira página já é suficiente.
 
+
+== SOLUTION (Brazilian Portuguese)
+
+
+
 === INSTALLATION
 
-1) Be sure your environment is read to run Python applications (https://www.python.org/about/gettingstarted/)
+1) Be sure your environment is ready to run Python (2.7x) applications (https://www.python.org/about/gettingstarted/)
 
 2) Recommended use of virtual environment (Brazilian Portuguese reference: https://osantana.me/ambiente-isolado-para-python-com-virtualenv/)
 
