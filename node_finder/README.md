@@ -49,6 +49,7 @@ Desenvolvimento de um programa que, dado um arquivo de entrada contendo código 
 
 6) Retorna uma representação string do nó com maior score ou "None" caso nenhum nó tenha sido encontrado (ex: "body" é vazio)
 
+obs: A pasta "tests" contém um teste unitário simples para validação da classe (TODO: mais cenários de teste)
 
 INSTALLATION
 -
